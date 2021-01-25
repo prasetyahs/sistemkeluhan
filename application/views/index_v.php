@@ -25,6 +25,7 @@
     $this->session->set_flashdata('istrue', ''); ?>
     <input type="hidden" id="message" value="<?= $this->session->flashdata('message') ?>">
     <input type="hidden" id="istrue" value="<?= $this->session->flashdata('istrue') ?>">
+    <input type="hidden" id="url" value="<?= base_url() . 'home/alternatifNumber' ?>">
     <section class="page-section bg-primary" id="about">
         <div class="container">
             <div class="row justify-content-center">
@@ -343,36 +344,35 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="modal-body" style=" overflow-x: auto;">
-                        <label for="" style="color:red;font-size:13px">* Nilai Maks 10</label>
-                        <table id="classTable" class="table table-bordered">
-                            <tbody>
-                                <thead>
-                                    <th>Attribut</th>
-                                    <th>Jumlah</th>
-                                </thead>
-                                <?php foreach ($jenisKeluhan as $js) { ?>
-                                    <tr>
-                                        <td><?= $js['jenis_keluhan'] ?></td>
-                                        <td>
-                                            <select class="form-control" id="sel1" name="number[]">
-                                                <?php for ($i = 1; $i <= 10; $i++) { ?>
-                                                    <option><?= $i ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="modal-body simulasi">
+                    <label for="" style="color:red;font-size:13px">* Nilai Maks 10</label>
+                    <table id="classTable" class="table table-bordered">
+                        <tbody>
+                            <thead>
+                                <th>Attribut</th>
+                                <th>Jumlah</th>
+                            </thead>
+                            <?php foreach ($jenisKeluhan as $js) { ?>
+                                <tr>
+                                    <td><?= $js['jenis_keluhan'] ?></td>
+                                    <td>
+                                        <select class="form-control" id="num" name="number[]">
+                                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                                <option value="<?= $i ?>"><?= $i ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Tutup
                     </button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="ulang">
+                    <button type="button" class="btn btn-danger" id="ulang">
                         Ulang
                     </button>
                     <button type="submit" class="btn btn-primary" id="proses">Lihat Hasil</button>

@@ -1,5 +1,4 @@
 $(function() {
-    console.log('hello world');
     $('.print').click(function() {
         printDiv("table-responsive");
 
@@ -50,7 +49,25 @@ $(function() {
         $("#form1").trigger('submit');
     });
 
-    $('#proses').click(() => {
+    $('#ulang').click(() => {
+        $('select[name="number[]"]').val(0);
+        $('label').remove('.info'); 
+    });
 
+    $('#proses').click(() => {
+        var number = $('select[name="number[]"]').serializeArray();
+        var url = $('#url').val();
+        $.ajax({
+            url: url,
+            type: "post",
+            data: number,
+            dataType: 'JSON',
+            success: function(response) {
+                $('.simulasi').append('<label class="info" style="color:red;font-size:13px">* Prioritas Utama ' + response['name'] + ' dengan nilai ' + response['max'] + '</label>')
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
     });
 });

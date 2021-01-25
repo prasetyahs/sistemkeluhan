@@ -111,16 +111,15 @@ class Home extends CI_Controller
     public function alternatifNumber()
     {
         $number = $this->input->post('number');
-        // foreach($number as $n){
-
-        // }
-        print_r($this->mreport->getCategoryReportCount());
-        
-        // $result = [];
-        // foreach ($category as  $value) {
-        //     $newData =  $this->mreport->getReportCountByCategory($value['id_keluhanplgn'], "keluhan") / $this->mreport->getCategoryReportCount();
-        //     array_push($result, $newData);
-        // }
-        // print_r($result);
+        $data = $this->musers->readJenisKeluhan();
+        $count = count($data);
+        $result = array();
+        for ($i = 0; $i < $count; $i++) {
+            $newData[$data[$i]['jenis_keluhan']] = $number[$i] / $count;
+            $result = $newData;
+        }
+        $max = max($result);
+        $index = array_search($max, $result);
+        echo json_encode(['max'=>$max,'name'=>$index]);
     }
 }
