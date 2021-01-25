@@ -20,7 +20,7 @@ class Home extends CI_Controller
         $this->load->view("index_v");
         $this->load->view("layout/footer");
     }
-  
+
 
     public function logout()
     {
@@ -111,9 +111,11 @@ class Home extends CI_Controller
     public function alternatifNumber()
     {
         $number = $this->input->post('number');
-        print_r( $this->mreport->getCategoryReport());
+        // foreach($number as $n){
 
-        // $category = $this->mreport->getCategoryReport();
+        // }
+        print_r($this->mreport->getCategoryReportCount());
+        
         // $result = [];
         // foreach ($category as  $value) {
         //     $newData =  $this->mreport->getReportCountByCategory($value['id_keluhanplgn'], "keluhan") / $this->mreport->getCategoryReportCount();
