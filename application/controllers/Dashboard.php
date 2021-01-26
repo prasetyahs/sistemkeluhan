@@ -34,13 +34,13 @@ class Dashboard extends CI_Controller
 
         $category = $this->mreport->getCategoryReport();
         $result = [];
-        foreach ($category as  $value) {
-            $newData =  $this->mreport->getReportCountByCategory($value['id_keluhanplgn'], "keluhan") / $this->mreport->getCategoryReportCount();
-            array_push($result, $newData);
-            $this->mreport->updateValueAlternatif(['nilai_alternatif' => $newData], ['keluhan' => $value['id_keluhanplgn']]);
-        }
-        $data['max'] = $this->mreport->getMaxAltenative()->nilai_alternatif;
-        $data['min'] = $this->mreport->getMinAltenative()->nilai_alternatif;
+        // foreach ($category as  $value) {
+        //     $newData =  $this->mreport->getReportCountByCategory($value['id_keluhanplgn'], "keluhan") / $this->mreport->getCategoryReportCount();
+        //     array_push($result, $newData);
+        //     $this->mreport->updateValueAlternatif(['nilai_alternatif' => $newData], ['keluhan' => $value['id_keluhanplgn']]);
+        // }
+        // $data['max'] = $this->mreport->getMaxAltenative()->nilai_alternatif;
+        // $data['min'] = $this->mreport->getMinAltenative()->nilai_alternatif;
         $limit_page = 8;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
         $data['results'] = $this->mreport->getReportByWhere("status", "Diterima", $limit_page, $page * $limit_page);

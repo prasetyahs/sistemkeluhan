@@ -55,11 +55,12 @@
                                                     <td><?= $row['tanggal'] ?></td>
                                                     <td><?= $row['pesan'] ?> </td>
                                                     <td><?= $row['nilai_alternatif']  ?></td>
-                                                    <?php if ($row['nilai_alternatif'] == $max) { ?>
+                                                    <td><?= $row['nilai_alternatif']  ?></td>
+                                                    <!-- <?php if ($row['nilai_alternatif'] == $max) { ?>
                                                         <td><span class="badge badge-pill badge-primary" style="background-color: green;">Prioritas Utama</span></td>
                                                     <?php } else { ?>
                                                         <td><span class="badge badge-pill badge-warning" style="background-color: blue;">Non Prioritas</span></td>
-                                                    <?php } ?>
+                                                    <?php } ?> -->
                                                     <td style='text-align:center;'><a class='btn btn-primary' href='<?= base_url() ?>dashboard/processstatus/<?= $row['id_keluhan'] ?>'>
                                                             <i class='fa fa-fw' aria-hidden='true' title='Copy to use eye'>&#xf06e</i></a></td>
                                                 </tr>
